@@ -1,0 +1,22 @@
+name: Automatic Revert
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  actions: write
+  contents: write
+
+jobs:
+  revert-commit:
+    if:  contains(github.event.head_commit.message, 'revert')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout latest code
+        uses: actions/checkout@v2
+      - name: Automatic Revert
+        uses: ideabreeding-projects/auto-revert@v0.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
