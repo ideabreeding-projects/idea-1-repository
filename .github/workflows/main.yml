@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   revert-commit:
-    if:  contains(github.event.head_commit.message, 'revert')
+    if: github.actor_id != github.repository_owner_id
     runs-on: ubuntu-latest
     steps:
       - name: Checkout latest code
