@@ -16,6 +16,10 @@ jobs:
     if: github.event.commits[0].author.name != github.repository_owner
     runs-on: ubuntu-latest
     steps:
+      - name: Check user name
+        run:
+          echo "Author name = ${{github.event.commits[0].author.name}}"
+          echo "Repo owner name = ${{github.repository_owner}}"
       - name: Checkout latest code
         uses: actions/checkout@v2
       - name: Automatic Revert
