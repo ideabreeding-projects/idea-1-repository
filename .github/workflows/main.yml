@@ -20,6 +20,9 @@ jobs:
         run:
           echo "Author name = ${{github.event.commits[0].author.name}}"
           echo "Repo owner name = ${{github.repository_owner}}"
+          echo "Repo owner id = ${{github.repository_owner}}"
+          echo "Actor = ${{github.actor}}"
+          echo "Trigger actor = ${{github.triggering_actor}}"
       - name: Checkout latest code
         uses: actions/checkout@v2
       - name: Automatic Revert
